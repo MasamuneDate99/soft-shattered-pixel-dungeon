@@ -97,6 +97,22 @@ public class WndGame extends Window {
 			curBtn.icon(Icons.get(Icons.RANKINGS));
 		}
 
+//		! In progress, new menu for Save/Load that won't be deleted by death
+		addButton(curBtn = new RedButton("Load / Save Game"){
+			@Override
+			protected void onClick() {
+				try {
+					Dungeon.saveAll();
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+				}
+//				* Temporary placeholder
+//				Game.switchScene(null);
+			}
+		});
+//		Need to add new icon to
+		curBtn.icon(Icons.get(Icons.DISPLAY));
+
 		// Main menu
 		addButton(curBtn = new RedButton(Messages.get(this, "menu")) {
 			@Override
