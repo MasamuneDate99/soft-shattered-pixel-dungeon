@@ -264,8 +264,8 @@ public class Dungeon {
 		branch = 0;
 		generatedLevels.clear();
 
-		gold = 0;
-		energy = 0;
+		gold = 6000;
+		energy = 100;
 
 		droppedItems = new SparseArray<>();
 
@@ -532,6 +532,8 @@ public class Dungeon {
 		if (posLeftThisSet <= 0) return false;
 
 		int floorThisSet = (depth % 5);
+//		! TYR if depth == 5, guaranteed drop POS, so 3 POS / level
+		if(depth == 5) return true;
 
 		//pos drops every two floors, (numbers 1-2, and 3-4) with a 50% chance for the earlier one each time.
 		int targetPOSLeft = 2 - floorThisSet/2;
@@ -544,8 +546,8 @@ public class Dungeon {
 	
 	public static boolean souNeeded() {
 		int souLeftThisSet;
-		//3 SOU each floor set
-		souLeftThisSet = 3 - (LimitedDrops.UPGRADE_SCROLLS.count - (depth / 5) * 3);
+		// ! 5 SOU each floor set
+		souLeftThisSet = 5 - (LimitedDrops.UPGRADE_SCROLLS.count - (depth / 5) * 5);
 		if (souLeftThisSet <= 0) return false;
 
 		int floorThisSet = (depth % 5);
@@ -554,8 +556,8 @@ public class Dungeon {
 	}
 	
 	public static boolean asNeeded() {
-		//1 AS each floor set
-		int asLeftThisSet = 1 - (LimitedDrops.ARCANE_STYLI.count - (depth / 5));
+		// ! 2 AS each floor set
+		int asLeftThisSet = 2 - (LimitedDrops.ARCANE_STYLI.count - (depth / 5) * 2);
 		if (asLeftThisSet <= 0) return false;
 
 		int floorThisSet = (depth % 5);

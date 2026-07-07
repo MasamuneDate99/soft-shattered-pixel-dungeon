@@ -2446,9 +2446,14 @@ public class Hero extends Char {
 		
 		boolean smthFound = false;
 
-		boolean circular = pointsInTalent(Talent.WIDE_SEARCH) == 1;
-		int distance = heroClass == HeroClass.ROGUE ? 2 : 1;
-		if (hasTalent(Talent.WIDE_SEARCH)) distance++;
+//		* TYR : original code for search
+//		boolean circular = pointsInTalent(Talent.WIDE_SEARCH) == 1;
+//		int distance = heroClass == HeroClass.ROGUE ? 2 : 1;
+//		if (hasTalent(Talent.WIDE_SEARCH)) distance++;
+
+//		! TYR : All hero have wide search
+		boolean circular = true;
+		int distance = 3;
 		
 		boolean foresight = buff(Foresight.class) != null;
 		boolean foresightScan = foresight && !Dungeon.level.mapped[pos];
