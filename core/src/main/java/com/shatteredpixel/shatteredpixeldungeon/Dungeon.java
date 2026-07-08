@@ -264,7 +264,8 @@ public class Dungeon {
 		branch = 0;
 		generatedLevels.clear();
 
-		gold = 6000;
+//		! 500 Starting gold, with a few alchemy energy
+		gold = 500;
 		energy = 100;
 
 		droppedItems = new SparseArray<>();

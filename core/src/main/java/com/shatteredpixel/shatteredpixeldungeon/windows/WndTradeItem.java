@@ -251,7 +251,8 @@ public class WndTradeItem extends WndInfoItem {
 		//selling items in the sell interface doesn't spend time
 		hero.spend(-hero.cooldown());
 
-		new Gold( item.value() ).doPickUp( hero );
+//		Increase sell price by 2* the original value
+		new Gold(item.value()*2).doPickUp(hero);
 
 		if (shop != null){
 			shop.buybackItems.add(item);
