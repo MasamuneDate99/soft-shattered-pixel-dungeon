@@ -173,10 +173,8 @@ public class Dungeon {
 				} else {
 					lim.count = 0;
 				}
-				
 			}
 		}
-
 	}
 
 	public static int challenges;
@@ -231,7 +229,6 @@ public class Dungeon {
 	}
 	
 	public static void init() {
-
 		initialVersion = version = Game.versionCode;
 		challenges = SPDSettings.challenges();
 		mobsToChampion = 1;
@@ -533,8 +530,6 @@ public class Dungeon {
 		if (posLeftThisSet <= 0) return false;
 
 		int floorThisSet = (depth % 5);
-//		! TYR if depth == 5, guaranteed drop POS, so 3 POS / level
-		if(depth == 5) return true;
 
 		//pos drops every two floors, (numbers 1-2, and 3-4) with a 50% chance for the earlier one each time.
 		int targetPOSLeft = 2 - floorThisSet/2;
