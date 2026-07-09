@@ -143,6 +143,11 @@ public abstract class RegularLevel extends Level {
 		if (Dungeon.shopOnLevel())
 			initRooms.add(new ShopRoom());
 
+//		! TYR testing shop at f1
+//		if(Dungeon.depth == 1){
+//			initRooms.add(new ShopRoom());
+//		}
+
 		//force max special rooms and add one more for large levels
 		int specials = specialRooms(feeling == Feeling.LARGE);
 		if (feeling == Feeling.LARGE){

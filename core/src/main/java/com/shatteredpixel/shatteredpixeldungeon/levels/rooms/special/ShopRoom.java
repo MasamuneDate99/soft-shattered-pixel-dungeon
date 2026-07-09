@@ -269,11 +269,18 @@ public class ShopRoom extends SpecialRoom {
 
 		itemsToSpawn.add( new Alchemize().quantity(Random.IntRange(2, 3)));
 
-		Bag bag = ChooseBag(Dungeon.hero.belongings);
-		if (bag != null) {
-			itemsToSpawn.add(bag);
-		}
+//		! Commented out since we're giving bags at the start
+//		Bag bag = ChooseBag(Dungeon.hero.belongings);
+//		if (bag != null) {
+//			itemsToSpawn.add(bag);
+//		}
+//		Add new ring instead
+		Item guaranteedRing = Generator.random(Generator.Category.RING);
+		guaranteedRing.cursed = false;
+		itemsToSpawn.add(guaranteedRing.identify());
 
+		itemsToSpawn.add( new PotionOfHealing() );
+//		Bonus 1 more potion of healing
 		itemsToSpawn.add( new PotionOfHealing() );
 		itemsToSpawn.add( Generator.randomUsingDefaults( Generator.Category.POTION ) );
 		itemsToSpawn.add( Generator.randomUsingDefaults( Generator.Category.POTION ) );
@@ -282,10 +289,11 @@ public class ShopRoom extends SpecialRoom {
 		itemsToSpawn.add( new ScrollOfRemoveCurse() );
 		itemsToSpawn.add( new ScrollOfMagicMapping() );
 
-		for (int i=0; i < 2; i++)
+		for (int i=0; i < 2; i++){
 			itemsToSpawn.add( Random.Int(2) == 0 ?
 					Generator.randomUsingDefaults( Generator.Category.POTION ) :
 					Generator.randomUsingDefaults( Generator.Category.SCROLL ) );
+		}
 
 
 		itemsToSpawn.add( new SmallRation() );
@@ -358,8 +366,8 @@ public class ShopRoom extends SpecialRoom {
 		return itemsToSpawn;
 	}
 
+	@Deprecated
 	protected static Bag ChooseBag(Belongings pack){
-
 		//generate a hashmap of all valid bags.
 		HashMap<Bag, Integer> bags = new HashMap<>();
 		if (!Dungeon.LimitedDrops.VELVET_POUCH.dropped()) bags.put(new VelvetPouch(), 1);
@@ -397,9 +405,6 @@ public class ShopRoom extends SpecialRoom {
 		} else if (bestBag instanceof MagicalHolster){
 			Dungeon.LimitedDrops.MAGICAL_HOLSTER.drop();
 		}
-
 		return bestBag;
-
 	}
-
 }

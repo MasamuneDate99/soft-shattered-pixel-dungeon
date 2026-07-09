@@ -189,10 +189,8 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 
 public class Hero extends Char {
-
 	{
 		actPriority = HERO_PRIO;
-		
 		alignment = Alignment.ALLY;
 	}
 	
@@ -242,19 +240,17 @@ public class Hero extends Char {
 
 	public Hero() {
 		super();
-
-		HP = HT = 20;
+//		Bump to 30
+		HP = HT = 30;
 		STR = STARTING_STR;
-		
 		belongings = new Belongings( this );
-		
 		visibleEnemies = new ArrayList<>();
 	}
 	
 	public void updateHT( boolean boostHP ){
 		int curHT = HT;
 		
-		HT = 20 + 5*(lvl-1) + HTBoost;
+		HT = 30 + 5*(lvl-1) + HTBoost;
 		float multiplier = RingOfMight.HTMultiplier(this);
 		HT = Math.round(multiplier * HT);
 		
@@ -2452,8 +2448,8 @@ public class Hero extends Char {
 //		if (hasTalent(Talent.WIDE_SEARCH)) distance++;
 
 //		! TYR : All hero have wide search
-		boolean circular = true;
-		int distance = 3;
+		boolean circular = false;
+		int distance = 2;
 		
 		boolean foresight = buff(Foresight.class) != null;
 		boolean foresightScan = foresight && !Dungeon.level.mapped[pos];

@@ -213,13 +213,22 @@ public abstract class Level implements Bundlable {
 	private static final String FEELING		= "feeling";
 
 	public void create() {
-
 		Random.pushGenerator( Dungeon.seedCurDepth() );
 
 		//TODO maybe just make this part of RegularLevel?
 		if (!Dungeon.bossLevel() && Dungeon.branch == 0) {
 
 			addItemToSpawn(Generator.random(Generator.Category.FOOD));
+//			* Bonus food, 50% chance
+			if(Random.Int(2) == 1){
+				addItemToSpawn(Generator.random(Generator.Category.FOOD));
+			}
+
+			if(Dungeon.depth%4 == 0){
+//				! Always drop extra POS & SoU at last floor before boss
+				addItemToSpawn(new PotionOfStrength());
+				addItemToSpawn(new ScrollOfUpgrade());
+			}
 
 			if (Dungeon.posNeeded()) {
 				Dungeon.LimitedDrops.STRENGTH_POTIONS.count++;
