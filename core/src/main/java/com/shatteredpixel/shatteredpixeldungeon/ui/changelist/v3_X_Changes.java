@@ -48,6 +48,7 @@ public class v3_X_Changes {
 
 	public static void addAllChanges( ArrayList<ChangeInfo> changeInfos ){
 		add_Coming_Soon(changeInfos);
+		add_v3_RWK1(changeInfos);
 		add_v3_3_Changes(changeInfos);
 		add_v3_2_Changes(changeInfos);
 		add_v3_1_Changes(changeInfos);
@@ -80,6 +81,62 @@ public class v3_X_Changes {
 
 		changes.addButton( new ChangeButton(Icons.get(Icons.PREFS), "Other Changes",
 				"I expect the next update to be fairly light on smaller changes, as I want the focus to be on the new quest. There will surely be the usual amount of smaller tweaks and bug fixes though, and in particular I expect there will be at least a little balancing to follow up on the new items and item changes in v3.3."));
+	}
+
+	public static void add_v3_RWK1( ArrayList<ChangeInfo> changeInfos ) {
+		ChangeInfo changes = new ChangeInfo("V3-Soft Ver", true, "");
+		changes.hardlight(Window.TITLE_COLOR);
+		changeInfos.add(changes);
+		changes.addButton( new ChangeButton(Icons.get(Icons.SHPX), "Introduction",
+				"Hello, TYR here ! Welcome to my first changelog of the soft version of Shattered Pixel Dungeon ! Will probably move this into it's separate category to not clutter the main official update i guess.\n" +
+				"\n" +
+				"This forked was created mainly for me to enjoy PD more leisurely because i think the original PD and SPD are a little bit to hard, by hard i mean i can't save scum in case i fuck up and have to start all over again ( skill issue on my end ). " +
+				"And I just think I can share my own version if anyone willing to try mine i guess ?"));
+
+		changes = new ChangeInfo("V3-soft.1", false, "");
+		changes.hardlight(Window.TITLE_COLOR);
+		changeInfos.add(changes);
+		changes.addButton(new ChangeButton(Icons.get(Icons.PREFS), Messages.get(ChangesScene.class, "misc"),
+				"**Shop Adjustment**\n" +
+						"**-** Shop cost 50% / 33% / 25% / 20% cheaper ( per dungeon depth )\n" +
+						"**-** Shop sells at least 2 potion of healing, and at least 1 random ring ( instead of 2 and 1 ( random chance ) ) \n" +
+						"**-** Shop will buy items at 2x the value ( For all depths, no changes otherwise ) \n" +
+
+						"\n" +
+						"**Starting item adjustment**\n" +
+						"**-** All bags are acquired from start \n" +
+						"**-** Start with 500 gold and 100 energy \n" +
+						"**-** Start with Extra 5 scroll of transmutation ( for artifact ), and 5 extra scroll of identify \n" +
+						"**-** Start with Skeleton key for opening door \n" +
+						"**-** Starting HP increased to 30 from 20\n" +
+
+						"\n" +
+						"**Dungeon drop adjustment** \n" +
+						"**-** Each level will drop 3 potion of strength instead of 2, and 5 scroll of upgrade instead of 3 \n" +
+						"**-** 50% chance for each floor to have extra food\n" +
+
+						"\n" +
+						"**Alchemy Adjustment** \n" +
+						"**-** Energy gained from all item is increased by 50% ( Round down )\n" +
+
+						"\n" +
+						"**Item Adjustment** \n" +
+						"**-** Blessed Ankh restore 3/4 HP instead of only 1/4 HP\n" +
+						"**-** Added 2 more selections to scroll of enchantment, rate unchanged\n" +
+
+						"\n" +
+						"**Hero Adjustment** \n" +
+						"**-** All hero have wide search with a radius of 5*5\n" +
+						"**-** Rogue talent will be reworked ( for wide search )\n" +
+						"**-** Coming soon other rebalance\n"));
+
+		changes = new ChangeInfo("V3-soft.2", false, "");
+		changes.hardlight(Window.TITLE_COLOR);
+		changeInfos.add(changes);
+		changes.addButton(new ChangeButton(Icons.get(Icons.PREFS), Messages.get(ChangesScene.class, "misc"),
+				"**Added Save/Load Function**" +
+						"\n" +
+						"Brings Save/Load functionality from Soft Pixel Dungeon, this Save/Load are indenpendent from this game Save/Load, it won't auto save so you need to Save manually. Load game by starting a new game with it's respective class, save won't be deleted if you died"));
 	}
 
 	public static void add_v3_3_Changes( ArrayList<ChangeInfo> changeInfos ) {

@@ -79,6 +79,8 @@ import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 import com.watabou.utils.Reflection;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -575,7 +577,8 @@ abstract public class Weapon extends KindOfWeapon {
 
 		public String name() {
 			if (!curse())
-				return name( Messages.get(this, "enchant"));
+//				! TYR : Because I'm to lazy to edit all the fucking .properties one by one to capitalize it
+				return StringUtils.capitalize(name( Messages.get(this, "enchant")));
 			else
 				return name( Messages.get(Item.class, "curse"));
 		}

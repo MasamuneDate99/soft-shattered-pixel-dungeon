@@ -53,7 +53,7 @@ public class WndEnergizeItem extends WndInfoItem {
 
 		if (item.quantity() == 1) {
 
-			RedButton btnEnergize = new RedButton( Messages.get(this, "energize", item.energyVal()) ) {
+			RedButton btnEnergize = new RedButton( Messages.get(this, "energize", Math.round(item.energyVal() * 1.5f))) {
 				@Override
 				protected void onClick() {
 					if (item instanceof Trinket){
@@ -90,7 +90,7 @@ public class WndEnergizeItem extends WndInfoItem {
 
 		} else {
 
-			int energyAll = item.energyVal();
+			int energyAll = Math.round(item.energyVal() * 1.5f);
 			RedButton btnEnergize1 = new RedButton( Messages.get(this, "energize_1", energyAll / item.quantity()) ) {
 				@Override
 				protected void onClick() {
