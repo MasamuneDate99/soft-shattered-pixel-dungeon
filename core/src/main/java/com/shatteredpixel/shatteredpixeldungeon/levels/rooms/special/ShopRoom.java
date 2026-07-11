@@ -49,6 +49,7 @@ import com.shatteredpixel.shatteredpixeldungeon.items.potions.PotionOfHealing;
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfIdentify;
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfRemoveCurse;
+import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.shatteredpixel.shatteredpixeldungeon.items.spells.Alchemize;
 import com.shatteredpixel.shatteredpixeldungeon.items.stones.StoneOfAugmentation;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MeleeWeapon;
@@ -357,12 +358,16 @@ public class ShopRoom extends SpecialRoom {
 		rare.cursedKnown = true;
 		itemsToSpawn.add( rare );
 
+//		! 25% chance for shop to sold SoU
+		if(Random.Int(3) == 1){
+			itemsToSpawn.add(new ScrollOfUpgrade().identify());
+		}
+
 		//use a new generator here to prevent items in shop stock affecting levelgen RNG (e.g. sandbags)
 		//we can use a random long for the seed as it will be the same long every time
 		Random.pushGenerator(Random.Long());
-			Random.shuffle(itemsToSpawn);
+		Random.shuffle(itemsToSpawn);
 		Random.popGenerator();
-
 		return itemsToSpawn;
 	}
 

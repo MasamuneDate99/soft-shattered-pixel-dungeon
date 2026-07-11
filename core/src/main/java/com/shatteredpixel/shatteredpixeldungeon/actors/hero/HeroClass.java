@@ -113,21 +113,16 @@ public enum HeroClass {
 		Item i = new ClothArmor().identify();
 		if (!Challenges.isItemBlocked(i)) hero.belongings.armor = (ClothArmor)i;
 
-//		Bonus 5 scroll of identify, scroll of transmutation
-		for(int x = 0 ; x<5 ; x++){
-			i = new ScrollOfTransmutation().identify();
-			i.collect();
-			i = new ScrollOfIdentify().identify();
-			i.collect();
-		}
-
-//		Extra food ration
-		if (!Challenges.isItemBlocked(i)){
-			for(int x = 0; x<10; x++){
-				i = new Food();
-				i.collect();
-			}
-		}
+		new ScrollOfTransmutation().identify().collect();
+		new ScrollOfTransmutation().identify().collect();
+		new ScrollOfTransmutation().identify().collect();
+		new ScrollOfIdentify().identify().collect();
+		new ScrollOfIdentify().identify().collect();
+		new Food().identify().collect();
+		new Food().identify().collect();
+		new Food().identify().collect();
+		new Food().identify().collect();
+		new Food().identify().collect();
 
 //		* Containers
 		new VelvetPouch().collect();

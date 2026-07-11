@@ -127,9 +127,6 @@ public abstract class RegularLevel extends Level {
 		initRooms.add ( roomEntrance = EntranceRoom.createEntrance());
 		initRooms.add( roomExit = ExitRoom.createExit());
 
-//		TYR for Testing lab
-//		initRooms.add( new LaboratoryRoom() );
-
 		//force max standard rooms and multiple by 1.5x for large levels
 		int standards = standardRooms(feeling == Feeling.LARGE);
 		if (feeling == Feeling.LARGE){
@@ -147,9 +144,10 @@ public abstract class RegularLevel extends Level {
 		if (Dungeon.shopOnLevel())
 			initRooms.add(new ShopRoom());
 
-//		! TYR testing shop at f1
+//		! TYR TESTING ROOM SPAWN
 //		if(Dungeon.depth == 1){
 //			initRooms.add(new ShopRoom());
+//			initRooms.add(new LaboratoryRoom());
 //		}
 
 		//force max special rooms and add one more for large levels

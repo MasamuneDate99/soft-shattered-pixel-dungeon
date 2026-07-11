@@ -101,19 +101,20 @@ public class v3_X_Changes {
 						"**-** Shop cost 50% / 33% / 25% / 20% cheaper ( per dungeon depth )\n" +
 						"**-** Shop sells at least 2 potion of healing, and at least 1 random ring ( instead of 2 and 1 ( random chance ) ) \n" +
 						"**-** Shop will buy items at 2x the value ( For all depths, no changes otherwise ) \n" +
+						"**-** Shop has 25% chance to sell a single overprice Scroll of Upgrade ( Selling price remain the same ) \n" +
 
 						"\n" +
 						"**Starting item adjustment**\n" +
 						"**-** All bags are acquired from start \n" +
 						"**-** Start with 500 gold and 100 energy \n" +
-						"**-** Start with Extra 5 scroll of transmutation ( for artifact ), and 5 extra scroll of identify \n" +
+						"**-** Start with Extra 3 scroll of transmutation, and 2 extra scroll of identify \n" +
 						"**-** Start with Skeleton key for opening door \n" +
 						"**-** Starting HP increased to 30 from 20\n" +
 
 						"\n" +
 						"**Dungeon drop adjustment** \n" +
 						"**-** Each level will drop 3 potion of strength instead of 2, and 5 scroll of upgrade instead of 3 \n" +
-						"**-** 50% chance for each floor to have extra food\n" +
+						"**-** 33% chance for each floor to have extra food\n" +
 
 						"\n" +
 						"**Alchemy Adjustment** \n" +

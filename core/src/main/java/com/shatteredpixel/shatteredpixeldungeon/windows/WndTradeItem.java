@@ -33,6 +33,7 @@ import com.shatteredpixel.shatteredpixeldungeon.items.Gold;
 import com.shatteredpixel.shatteredpixeldungeon.items.Heap;
 import com.shatteredpixel.shatteredpixeldungeon.items.Item;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.MasterThievesArmband;
+import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.shatteredpixel.shatteredpixeldungeon.journal.Catalog;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
@@ -44,6 +45,7 @@ import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSpriteSheet;
 import com.shatteredpixel.shatteredpixeldungeon.ui.CurrencyIndicator;
 import com.shatteredpixel.shatteredpixeldungeon.ui.RedButton;
 import com.shatteredpixel.shatteredpixeldungeon.ui.RenderedTextBlock;
+import com.shatteredpixel.shatteredpixeldungeon.utils.GLog;
 
 public class WndTradeItem extends WndInfoItem {
 
@@ -85,8 +87,14 @@ public class WndTradeItem extends WndInfoItem {
 				add(warn);
 				pos = warn.bottom();
 			}
-
-			RedButton btnSell = new RedButton( Messages.get(this, "sell", item.value()*2) ) {
+			int value;
+			if(item instanceof ScrollOfUpgrade){
+				value = ((ScrollOfUpgrade) item).customValue(50);
+				GLog.h("TYR : price singular = " + value + ", QTY = " + item.quantity());
+			} else {
+				value = item.value()*2;
+			}
+			RedButton btnSell = new RedButton( Messages.get(this, "sell", value) ) {
 				@Override
 				protected void onClick() {
 					sell( item, finalShop);
@@ -100,8 +108,13 @@ public class WndTradeItem extends WndInfoItem {
 			pos = btnSell.bottom();
 
 		} else {
-
-			int priceAll= item.value()*2;
+			int priceAll;
+			if(item instanceof ScrollOfUpgrade){
+				priceAll = ((ScrollOfUpgrade) item).customValue(50);
+				GLog.h("TYR : priceAll = " + priceAll + ", QTY = " + item.quantity());
+			} else {
+				priceAll = item.value()*2;
+			}
 			RedButton btnSell1 = new RedButton( Messages.get(this, "sell_1", priceAll / item.quantity()) ) {
 				@Override
 				protected void onClick() {
@@ -251,8 +264,12 @@ public class WndTradeItem extends WndInfoItem {
 		//selling items in the sell interface doesn't spend time
 		hero.spend(-hero.cooldown());
 
-//		Increase sell price by 2* the original value
-		new Gold(item.value()*2).doPickUp(hero);
+//		! TYR Increase sell price by 2* the original value
+		if(item instanceof ScrollOfUpgrade){
+			new Gold(((ScrollOfUpgrade) item).customValue(50)).doPickUp(hero);
+		} else {
+			new Gold(item.value()*2).doPickUp(hero);
+		}
 
 		if (shop != null){
 			shop.buybackItems.add(item);

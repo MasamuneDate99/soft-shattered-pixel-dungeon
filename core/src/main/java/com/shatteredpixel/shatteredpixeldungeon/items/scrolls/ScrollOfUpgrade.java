@@ -160,10 +160,15 @@ public class ScrollOfUpgrade extends InventoryScroll {
 		hero.sprite.emitter().start( ShadowParticle.UP, 0.05f, 10 );
 		Badges.validateClericUnlock();
 	}
-	
+
 	@Override
 	public int value() {
 		return isKnown() ? 50 * quantity : super.value();
+	}
+
+//	! Custom value only for SoU
+	public int customValue(int price){
+		return isKnown() ? price * quantity : super.value();
 	}
 
 	@Override

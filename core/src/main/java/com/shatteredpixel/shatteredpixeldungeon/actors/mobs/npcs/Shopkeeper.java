@@ -36,6 +36,7 @@ import com.shatteredpixel.shatteredpixeldungeon.effects.particles.ElmoParticle;
 import com.shatteredpixel.shatteredpixeldungeon.items.Heap;
 import com.shatteredpixel.shatteredpixeldungeon.items.Item;
 import com.shatteredpixel.shatteredpixeldungeon.items.armor.Armor;
+import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.shatteredpixel.shatteredpixeldungeon.journal.Notes;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
@@ -250,7 +251,11 @@ public class Shopkeeper extends NPC {
 				options[i++] = Messages.get(Shopkeeper.this, "sell");
 				options[i++] = Messages.get(Shopkeeper.this, "talk");
 				for (Item item : buybackItems){
-					options[i] = Messages.get(Heap.class, "for_sale", item.value()*2, Messages.titleCase(item.title()));
+					if(item instanceof ScrollOfUpgrade){
+						options[i] = Messages.get(Heap.class, "for_sale", 50, Messages.titleCase(item.title()));
+					} else {
+						options[i] = Messages.get(Heap.class, "for_sale", item.value()*2, Messages.titleCase(item.title()));
+					}
 					if (options[i].length() > maxLen) options[i] = options[i].substring(0, maxLen-3) + "...";
 					i++;
 				}
@@ -266,8 +271,13 @@ public class Shopkeeper extends NPC {
 						} else if (index > 1){
 							GLog.i(Messages.get(Shopkeeper.this, "buyback"));
 							Item returned = buybackItems.remove(index-2);
-							Dungeon.gold -= returned.value()*2;
-							Statistics.goldCollected -= returned.value();
+							if(returned instanceof ScrollOfUpgrade){
+								Dungeon.gold -= ((ScrollOfUpgrade) returned).customValue(50);
+								Statistics.goldCollected -= ((ScrollOfUpgrade) returned).customValue(50);
+							} else {
+								Dungeon.gold -= returned.value()*2;
+								Statistics.goldCollected -= returned.value();
+							}
 							if (returned instanceof MissileWeapon && returned.isUpgradable()){
 								Buff.affect(Dungeon.hero, MissileWeapon.UpgradedSetTracker.class).levelThresholds.put(((MissileWeapon) returned).setID, returned.level());
 							}

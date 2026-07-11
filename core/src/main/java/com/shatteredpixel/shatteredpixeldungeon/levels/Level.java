@@ -219,7 +219,7 @@ public abstract class Level implements Bundlable {
 		if (!Dungeon.bossLevel() && Dungeon.branch == 0) {
 
 			addItemToSpawn(Generator.random(Generator.Category.FOOD));
-//			* Bonus food, 50% chance
+//			* TYR Bonus food, 33% chance
 			if(Random.Int(2) == 1){
 				addItemToSpawn(Generator.random(Generator.Category.FOOD));
 			}
