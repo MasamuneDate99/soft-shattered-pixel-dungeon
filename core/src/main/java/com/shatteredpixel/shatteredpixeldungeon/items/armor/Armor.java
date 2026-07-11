@@ -82,6 +82,8 @@ import com.watabou.utils.Bundle;
 import com.watabou.utils.Random;
 import com.watabou.utils.Reflection;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -832,7 +834,7 @@ public class Armor extends EquipableItem {
 		
 		public String name() {
 			if (!curse())
-				return name( Messages.get(this, "glyph") );
+				return StringUtils.capitalize(name(Messages.get(this, "glyph")));
 			else
 				return name( Messages.get(Item.class, "curse"));
 		}

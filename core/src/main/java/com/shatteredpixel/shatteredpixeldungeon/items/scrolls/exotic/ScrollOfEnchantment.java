@@ -42,6 +42,8 @@ import com.shatteredpixel.shatteredpixeldungeon.windows.WndOptions;
 import com.shatteredpixel.shatteredpixeldungeon.windows.WndTitledMessage;
 import com.watabou.noosa.audio.Sample;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class ScrollOfEnchantment extends ExoticScroll {
 	
 	{
@@ -172,7 +174,7 @@ public class ScrollOfEnchantment extends ExoticScroll {
 					ench3.name(),
 					ench4.name(),
 					ench5.name(),
-					Messages.get(ScrollOfEnchantment.class, "cancel"));
+					StringUtils.capitalize(Messages.get(ScrollOfEnchantment.class, "cancel")));
 			this.wep = wep;
 			enchantments = new Weapon.Enchantment[5];
 			enchantments[0] = ench1;
@@ -238,7 +240,7 @@ public class ScrollOfEnchantment extends ExoticScroll {
 					glyph3.name(),
 					glyph4.name(),
 					glyph5.name(),
-					Messages.get(ScrollOfEnchantment.class, "cancel"));
+					StringUtils.capitalize(Messages.get(ScrollOfEnchantment.class, "cancel")));
 			this.arm = arm;
 			glyphs = new Armor.Glyph[5];
 			glyphs[0] = glyph1;
